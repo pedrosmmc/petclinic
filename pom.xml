@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
@@ -10,7 +12,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.7.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.pedrocoelho.learningspringframework</groupId>
     <artifactId>petclinic</artifactId>
@@ -39,8 +41,10 @@
                 <configuration>
                     <goal>install</goal>
                     <checkModificationExcludes>
-                        <checkModificationExclude>petclinic-data/pom.xml</checkModificationExclude>
-                        <checkModificationExclude>pom.xml</checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>pom.xml
+                        </checkModificationExclude>
                     </checkModificationExcludes>
                 </configuration>
             </plugin>
@@ -48,9 +52,10 @@
     </build>
     <scm>
         <developerConnection>
-            scm:git:git@github.com:https://github.com/pedrosmmc/petclinic.git
+            scm:git:https://github.com/pedrosmmc/petclinic.git
         </developerConnection>
-      <tag>petclinic-0.0.1</tag>
-  </scm>
+        <url>https://github.com/pedrosmmc/petclinic.git</url>
+        <tag>petclinic-0.0.1</tag>
+    </scm>
 
 </project>
