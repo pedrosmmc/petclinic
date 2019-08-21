@@ -55,7 +55,6 @@
         <developerConnection>
             scm:git:git@github:pedrosmmc/petclinic.git
         </developerConnection>
-        <url>https://github.com/pedrosmmc/petclinic.git</url>
         <tag>petclinic-0.0.1</tag>
     </scm>
 
