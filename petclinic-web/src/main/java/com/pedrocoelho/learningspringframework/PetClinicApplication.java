@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.petclinic;
+package com.pedrocoelho.learningspringframework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

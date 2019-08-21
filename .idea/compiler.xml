@@ -6,16 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="petclinic" />
+        <module name="petclinic-web" />
+        <module name="petclinic-data" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="petclinic" target="12" />
+      <module name="petclinic-data" target="12" />
+      <module name="petclinic-web" target="12" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="petclinic" options="-parameters" />
+      <module name="petclinic-data" options="-parameters" />
+      <module name="petclinic-web" options="-parameters" />
     </option>
   </component>
 </project>

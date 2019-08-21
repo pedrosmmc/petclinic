@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.petclinic;
+package com.pedrocoelho.learningspringframework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

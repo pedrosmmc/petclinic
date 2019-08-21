@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.petclinic.model;
+package com.pedrocoelho.learningspringframework.model;
 
 public class PetType {
     private String name;
