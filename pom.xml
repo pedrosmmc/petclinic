@@ -26,6 +26,7 @@
         <start-class>
             com.pedrocoelho.learningspringframework.PetClinicApplication
         </start-class>
+        <project.scm.id>pedrocoelho-scm</project.scm.id>
     </properties>
 
     <build>
