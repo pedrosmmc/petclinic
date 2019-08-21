@@ -52,7 +52,7 @@
     </build>
     <scm>
         <developerConnection>
-            scm:git:https://github.com/pedrosmmc/petclinic.git
+            scm:git:github:https://github.com/pedrosmmc/petclinic.git
         </developerConnection>
         <url>https://github.com/pedrosmmc/petclinic.git</url>
         <tag>petclinic-0.0.1</tag>
