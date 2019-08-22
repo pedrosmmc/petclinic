@@ -3,19 +3,19 @@
     <parent>
         <artifactId>petclinic</artifactId>
         <groupId>com.pedrocoelho.learningspringframework</groupId>
-        <version>0.0.2</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>petclinic-web</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>petclinic-web</name>
 
     <dependencies>
         <dependency>
             <artifactId>petclinic-data</artifactId>
             <groupId>com.pedrocoelho.learningspringframework</groupId>
-            <version>0.0.2</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
