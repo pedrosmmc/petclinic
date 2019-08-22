@@ -1,16 +1,16 @@
 package com.pedrocoelho.learningspringframework.model;
 
 public class Person extends BaseEntity {
-    private String firtName;
+    private String firstName;
     private String lastName;
     private String phoneNumber;
 
     public String getFirtName() {
-        return firtName;
+        return firstName;
     }
 
-    public void setFirtName(String firtName) {
-        this.firtName = firtName;
+    public void setFirtName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
