@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>petclinic-data</module>
+        <module>petclinic-web</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.7.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.pedrocoelho.learningspringframework</groupId>
+    <artifactId>petclinic</artifactId>
+    <version>0.0.7-SNAPSHOT</version>
+    <name>petclinic</name>
+    <description>Learning JavaEE + Spring Framework - PetClinic Project
+    </description>
+
+    <properties>
+        <java.version>12</java.version>
+        <start-class>
+            com.pedrocoelho.learningspringframework.PetClinicApplication
+        </start-class>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.7.RELEASE</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <goal>install</goal>
+                    <checkModificationExcludes>
+                        <checkModificationExclude>petclinic-web/pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-web/release-pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/release-pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>release-pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>.idea/*
+                        </checkModificationExclude>
+                        <checkModificationExclude>
+                            petclinic-data/petclinic-data.iml
+                        </checkModificationExclude>
+                        <checkModificationExclude>
+                            petclinic-web/petclinic-web.iml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic.iml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/pom.xml.versionsBackup
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-web/pom.xml.versionsBackup
+                        </checkModificationExclude>
+                        <checkModificationExclude>pom.xml.versionsBackup
+                        </checkModificationExclude>
+                    </checkModificationExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:pedrosmmc/petclinic.git
+        </developerConnection>
+        <url>scm:git:ssh://pedrosmmc@github.com/pedrosmmc/petclinic.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>github-pedrosmmc-petclinic</id>
+            <name>pedrosmmc@gmail.com</name>
+            <url>https://github.com/pedrosmmc/petclinic</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+
+</project>
