@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.pedrocoelho.learningspringframework</groupId>
     <artifactId>petclinic</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.6</version>
     <name>petclinic</name>
     <description>Learning JavaEE + Spring Framework - PetClinic Project
     </description>
@@ -41,9 +41,15 @@
                     <checkModificationExcludes>
                         <checkModificationExclude>petclinic-web/pom.xml
                         </checkModificationExclude>
+                        <checkModificationExclude>petclinic-web/release-pom.xml
+                        </checkModificationExclude>
                         <checkModificationExclude>petclinic-data/pom.xml
                         </checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/release-pom.xml
+                        </checkModificationExclude>
                         <checkModificationExclude>pom.xml
+                        </checkModificationExclude>
+                        <checkModificationExclude>release-pom.xml
                         </checkModificationExclude>
                         <checkModificationExclude>.idea/*
                         </checkModificationExclude>
@@ -52,6 +58,14 @@
                         </checkModificationExclude>
                         <checkModificationExclude>
                             petclinic-web/petclinic-web.iml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic.iml
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-data/pom.xml.versionsBackup
+                        </checkModificationExclude>
+                        <checkModificationExclude>petclinic-web/pom.xml.versionsBackup
+                        </checkModificationExclude>
+                        <checkModificationExclude>pom.xml.versionsBackup
                         </checkModificationExclude>
                     </checkModificationExcludes>
                 </configuration>
@@ -63,7 +77,17 @@
         <developerConnection>scm:git:git@github.com:pedrosmmc/petclinic.git
         </developerConnection>
         <url>scm:git:ssh://pedrosmmc@github.com/pedrosmmc/petclinic.git</url>
-        <tag>petclinic-0.0.4-SNAPSHOT</tag>
+        <tag>petclinic-0.0.6</tag>
     </scm>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>github-pedrosmmc-petclinic</id>
+            <name>pedrosmmc@gmail.com</name>
+            <url>https://github.com/pedrosmmc/petclinic</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
 
 </project>
