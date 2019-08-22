@@ -1,6 +1,6 @@
 package com.pedrocoelho.learningspringframework.model;
 
-public class Person {
+public class Person extends BaseEntity {
     private String firtName;
     private String lastName;
     private String phoneNumber;
