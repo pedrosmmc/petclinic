@@ -33,11 +33,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.7.RELEASE</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
                 <configuration>
                     <goal>install</goal>
                     <checkModificationExcludes>
@@ -52,7 +52,7 @@
     </build>
     <scm>
         <developerConnection>
-            scm:git:ssh://github.com:pedrosmmc/petclinic.git
+            scm:git:git@github.com:pedrosmmc/petclinic.git
         </developerConnection>
 <!--        <tag>petclinic-0.0.1</tag>-->
     </scm>

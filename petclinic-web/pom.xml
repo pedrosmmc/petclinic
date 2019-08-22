@@ -11,7 +11,7 @@
 
     <dependencies>
         <dependency>
-            <artifactId>pet-clinic-data</artifactId>
+            <artifactId>petclinic-data</artifactId>
             <groupId>com.pedrocoelho.learningspringframework</groupId>
             <version>0.0.1</version>
         </dependency>
