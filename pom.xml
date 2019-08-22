@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.pedrocoelho.learningspringframework</groupId>
     <artifactId>petclinic</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.8-SNAPSHOT</version>
     <name>petclinic</name>
     <description>Learning JavaEE + Spring Framework - PetClinic Project
     </description>
@@ -77,7 +77,7 @@
         <developerConnection>scm:git:git@github.com:pedrosmmc/petclinic.git
         </developerConnection>
         <url>scm:git:ssh://pedrosmmc@github.com/pedrosmmc/petclinic.git</url>
-        <tag>petclinic-0.0.7</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
