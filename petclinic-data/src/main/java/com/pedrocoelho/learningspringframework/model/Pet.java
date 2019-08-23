@@ -1,7 +1,12 @@
 package com.pedrocoelho.learningspringframework.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Pet extends BaseEntity {
     private PetType petType;
     private Owner owner;
