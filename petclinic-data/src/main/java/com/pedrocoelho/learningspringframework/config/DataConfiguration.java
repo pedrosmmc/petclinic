@@ -8,18 +8,4 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DataConfiguration {
-    @Bean
-    public OwnerServiceMap ownerServiceMap() {
-        return new OwnerServiceMap();
-    }
-
-    @Bean
-    public VetServiceMap vetServiceMap() {
-        return new VetServiceMap();
-    }
-
-    @Bean
-    public PetServiceMap petServiceMap() {
-        return new PetServiceMap();
-    }
 }

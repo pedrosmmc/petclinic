@@ -2,11 +2,13 @@ package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.Vet;
 import com.pedrocoelho.learningspringframework.services.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public List<Vet> findAllByFirstName(String firstName) {

@@ -2,11 +2,13 @@ package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public List<Owner> findAllByFirstName(String firstName) {

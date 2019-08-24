@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataPopulate implements CommandLineRunner {
 
-    private OwnerService ownerService;
-    private VetService vetService;
-    private PetService petService;
+    private final OwnerService ownerService;
+    private final VetService vetService;
+    private final PetService petService;
 
     public DataPopulate(OwnerService ownerService, VetService vetService, PetService petService) {
         this.ownerService = ownerService;
