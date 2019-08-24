@@ -5,11 +5,11 @@ public class Person extends BaseEntity {
     private String lastName;
     private String phoneNumber;
 
-    public String getFirtName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirtName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 

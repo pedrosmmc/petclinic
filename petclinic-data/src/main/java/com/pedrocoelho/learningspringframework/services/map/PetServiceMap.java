@@ -1,11 +1,20 @@
 package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.Pet;
-import com.pedrocoelho.learningspringframework.services.BaseService;
+import com.pedrocoelho.learningspringframework.services.PetService;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements BaseService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
+    @Override
+    public List<Pet> findAllByName(String name) {
+        return map.values().stream().filter(pet -> pet.getName().equals(name))
+                .collect(Collectors.toList());
+    }
 
     @Override
     public Set<Pet> findAll() {
@@ -25,5 +34,10 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements Base
     @Override
     public void delete(Pet entity) {
         super.delete(entity);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        super.deleteById(id);
     }
 }
