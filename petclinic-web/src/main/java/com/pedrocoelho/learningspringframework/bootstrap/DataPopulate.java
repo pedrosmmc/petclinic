@@ -25,21 +25,18 @@ public class DataPopulate implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Owner o1 = new Owner();
-        o1.setId(31L);
         o1.setFirstName("Pablo");
         o1.setLastName("Gonzalvez");
 
         ownerService.save(o1);
 
         Owner o2 = new Owner();
-        o2.setId(32L);
         o2.setFirstName("Fiona");
         o2.setLastName("Martinez");
 
         ownerService.save(o2);
 
         Owner o3 = new Owner();
-        o3.setId(33L);
         o3.setFirstName("Martha");
         o3.setLastName("Alvarez");
 
@@ -48,14 +45,12 @@ public class DataPopulate implements CommandLineRunner {
         System.out.println("Populated owners...");
 
         Vet v1 = new Vet();
-        v1.setId(21L);
         v1.setFirstName("Ramirez");
         v1.setLastName("Almeida");
 
         vetService.save(v1);
 
         Vet v2 = new Vet();
-        v2.setId(22L);
         v2.setFirstName("Roma");
         v2.setLastName("Nowa");
 
@@ -64,13 +59,11 @@ public class DataPopulate implements CommandLineRunner {
         System.out.println("Populated vets...");
 
         Pet p1 = new Pet();
-        p1.setId(11L);
         p1.setName("Sancho");
 
         petService.save(p1);
 
         Pet p2 = new Pet();
-        p2.setId(12L);
         p2.setName("Giorgina");
 
         petService.save(p2);
