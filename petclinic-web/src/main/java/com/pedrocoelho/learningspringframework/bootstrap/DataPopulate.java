@@ -38,6 +38,13 @@ public class DataPopulate implements CommandLineRunner {
 
         ownerService.save(o2);
 
+        Owner o3 = new Owner();
+        o3.setId(33L);
+        o3.setFirstName("Martha");
+        o3.setLastName("Alvarez");
+
+        ownerService.save(o3);
+
         System.out.println("Populated owners...");
 
         Vet v1 = new Vet();

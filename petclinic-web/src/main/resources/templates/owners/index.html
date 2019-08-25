@@ -5,8 +5,26 @@
     <title>Owner's List</title>
 </head>
 <body>
+<!--/*@thymesVar id="owner" type="com.pedrocoelho.learningspringframework.model.Owner"*/-->
 <h1 th:text="'Pet Clinic'">Pet Clinic</h1>
 <h3 th:text="'by Pedro Coelho'">by Pedro Coelho</h3>
-<h2 th:text="'List of Owners'">List of Owners</h2>
+<h2 th:text="'List of Owners'">List of Owners:</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="owner:${owners}">
+        <td th:text="${owner?.id}">123</td>
+        <td th:text="${owner?.firstName}">Peter</td>
+        <td th:text="${owner?.lastName}">Pan</td>
+    </tr>
+    <tbody>
+</table>
 </body>
 </html>
