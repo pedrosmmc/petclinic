@@ -5,8 +5,25 @@
     <title>Vet's List</title>
 </head>
 <body>
+<!--/*@thymesVar id="vet" type="com.pedrocoelho.learningspringframework.model.Vet"*/-->
 <h1 th:text="'Pet Clinic'">Pet Clinic</h1>
-<h3 th:text="'by Pedro Coelho'">by Pedro Coelho</h3>
-<h2 th:text="'List of Vets'">List of Vets</h2>
+<h5 th:text="'by Pedro Coelho'">by Pedro Coelho</h5>
+<h3 th:text="'List of Vets'">List of Vets:</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet:${vets}">
+        <td th:text="${vet.id}">123</td>
+        <td th:text="${vet.firstName}">G</td>
+        <td th:text="${vet.lastName}">Lo</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
