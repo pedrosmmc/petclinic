@@ -1,12 +1,12 @@
 package com.pedrocoelho.learningspringframework.model;
 
-public class PetType extends BaseEntity{
+public class Speciality extends BaseEntity {
     private String name;
 
-    public PetType() {
+    public Speciality() {
     }
 
-    public PetType(String name) {
+    public Speciality(String name) {
         this.name = name;
     }
 
