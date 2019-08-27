@@ -21,11 +21,11 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
     }
 
     @Override
-    public List<PetType> findAllByName(String name) {
+    public PetType findByName(String name) {
         return map.values()
                 .stream()
                 .filter(petType -> petType.getName().equals(name))
-                .collect(Collectors.toList());
+                .findFirst().orElse(null);
     }
 
     @Override
