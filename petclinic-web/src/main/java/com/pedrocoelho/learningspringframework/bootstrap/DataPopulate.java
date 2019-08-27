@@ -2,12 +2,19 @@ package com.pedrocoelho.learningspringframework.bootstrap;
 
 import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.model.Pet;
+import com.pedrocoelho.learningspringframework.model.PetType;
 import com.pedrocoelho.learningspringframework.model.Vet;
 import com.pedrocoelho.learningspringframework.services.OwnerService;
 import com.pedrocoelho.learningspringframework.services.PetService;
 import com.pedrocoelho.learningspringframework.services.VetService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataPopulate implements CommandLineRunner {
@@ -58,13 +65,29 @@ public class DataPopulate implements CommandLineRunner {
 
         System.out.println("Populated vets...");
 
+        Set<PetType> petTypes = new HashSet<>();
+        petTypes.add(new PetType("Dog"));
+        petTypes.add(new PetType("Cat"));
+        petTypes.add(new PetType("Parrot"));
+        petTypes.add(new PetType("Hamster"));
+        petTypes.add(new PetType("Frog"));
+        petTypes.add(new PetType("Insect"));
+
+        PetType[] petTypesArr = petTypes.stream().toArray(PetType[]::new);
+
+        for(PetType t : petTypes) System.out.println(t.getName());
+
         Pet p1 = new Pet();
         p1.setName("Sancho");
+        p1.setBirthDay(LocalDate.of(2000,1,13));
+        p1.setPetType(petTypesArr[1]);
 
         petService.save(p1);
 
         Pet p2 = new Pet();
         p2.setName("Giorgina");
+        p2.setBirthDay(LocalDate.of(2019,8,26));
+        p2.setPetType(petTypesArr[2]);
 
         petService.save(p2);
 

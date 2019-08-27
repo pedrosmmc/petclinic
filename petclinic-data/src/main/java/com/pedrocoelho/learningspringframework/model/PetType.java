@@ -1,7 +1,11 @@
 package com.pedrocoelho.learningspringframework.model;
 
-public class PetType {
+public class PetType extends BaseEntity{
     private String name;
+
+    public PetType(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
