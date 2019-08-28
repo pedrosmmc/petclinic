@@ -13,6 +13,9 @@
         <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Specialities</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +23,11 @@
         <td th:text="${vet?.id}">123</td>
         <td th:text="${vet?.firstName}">G</td>
         <td th:text="${vet?.lastName}">Lo</td>
+        <td th:text="${vet?.address}">Travessa do Poço, 99, Coimbra</td>
+        <td th:text="${vet?.phoneNumber}">123789654</td>
+        <td><span th:each="speciality:${vet?.specialities}">
+        <span th:text="${speciality?.name}+', '"/>
+        </span></td>
     </tr>
     </tbody>
 </table>

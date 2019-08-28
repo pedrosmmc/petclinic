@@ -12,7 +12,10 @@ import java.util.stream.Collectors;
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public List<Pet> findAllByName(String name) {
-        return map.values().stream().filter(pet -> pet.getName().equals(name))
+        return map
+                .values()
+                .stream()
+                .filter(pet -> pet.getName().equals(name))
                 .collect(Collectors.toList());
     }
 
