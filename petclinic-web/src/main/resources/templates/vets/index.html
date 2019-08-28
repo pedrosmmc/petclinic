@@ -25,9 +25,7 @@
         <td th:text="${vet?.lastName}">Lo</td>
         <td th:text="${vet?.address}">Travessa do Poço, 99, Coimbra</td>
         <td th:text="${vet?.phoneNumber}">123789654</td>
-        <td><span th:each="speciality:${vet?.specialities}">
-        <span th:text="${speciality?.name}+', '"/>
-        </span></td>
+        <td><span th:text="${vet?.specialitiesToString()}"</td>
     </tr>
     </tbody>
 </table>

@@ -27,9 +27,10 @@
         <td th:text="${owner?.address}">Calhe de Barrio, 123, Madrid</td>
         <td th:text="${owner?.phoneNumber}">123123123</td>
         <td>
-            <span th:each="pet:${owner?.pets}">
-                <span th:text="${pet.name} + ', '"/>
-            </span>
+            <span th:text="${owner?.petsToString()}"/>
+<!--            <span th:each="pet:${owner?.pets}">-->
+<!--                <span th:text="${pet?.name} + ', '"/>-->
+<!--            </span>-->
         </td>
     </tr>
     <tbody>

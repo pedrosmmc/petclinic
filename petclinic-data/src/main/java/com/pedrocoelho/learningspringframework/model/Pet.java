@@ -52,4 +52,11 @@ public class Pet extends BaseEntity {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
