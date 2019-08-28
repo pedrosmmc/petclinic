@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
     <meta charset="UTF-8">
     <title>Owner's List</title>
@@ -13,6 +14,9 @@
         <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Pets</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +24,13 @@
         <td th:text="${owner?.id}">123</td>
         <td th:text="${owner?.firstName}">Peter</td>
         <td th:text="${owner?.lastName}">Pan</td>
+        <td th:text="${owner?.address}">Calhe de Barrio, 123, Madrid</td>
+        <td th:text="${owner?.phoneNumber}">123123123</td>
+        <td>
+            <span th:each="pet:${owner?.pets}">
+                <span th:text="${pet.name} + ', '"/>
+            </span>
+        </td>
     </tr>
     <tbody>
 </table>

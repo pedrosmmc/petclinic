@@ -1,7 +1,10 @@
 package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.Owner;
+import com.pedrocoelho.learningspringframework.model.Pet;
 import com.pedrocoelho.learningspringframework.services.OwnerService;
+import com.pedrocoelho.learningspringframework.services.PetService;
+import com.pedrocoelho.learningspringframework.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +13,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+    private PetTypeService petTypeService;
+    private PetService petService;
+
+    public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+        this.petTypeService = petTypeService;
+        this.petService = petService;
+    }
+
     @Override
     public List<Owner> findAllByFirstName(String firstName) {
         return map.values().stream().filter(owner -> owner.getFirstName().equals(firstName))
@@ -34,6 +45,21 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner entity) {
+        if (entity == null) return null;
+        if (entity.getPets() == null) return null;
+
+        entity.getPets().forEach(pet -> {
+            if (pet.getPetType() != null) {
+                if (pet.getPetType().getId() == null)
+                    pet.setPetType(petTypeService.save(pet.getPetType()));
+            } else throw new RuntimeException("Pet type is required");
+
+            if(pet.getId() == null) {
+                Pet savedPet = petService.save(pet);
+                pet.setId(savedPet.getId());
+            }
+        });
+
         return super.save(entity);
     }
 
