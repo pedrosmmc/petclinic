@@ -1,5 +1,6 @@
 package com.pedrocoelho.learningspringframework.model;
 
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
