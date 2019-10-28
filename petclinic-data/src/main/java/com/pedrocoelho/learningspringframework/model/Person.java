@@ -1,10 +1,22 @@
 package com.pedrocoelho.learningspringframework.model;
 
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+//makes this class to not to be created as a table in the Database
+@MappedSuperclass
 public class Person extends BaseEntity {
+
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "address")
     private String address;
+    @Column(name = "city")
     private String city;
 
     public String getFirstName() {

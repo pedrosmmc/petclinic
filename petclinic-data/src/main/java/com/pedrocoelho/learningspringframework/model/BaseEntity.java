@@ -1,12 +1,12 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+//makes this class to not to be created as a table in the Database
 @MappedSuperclass
 public class BaseEntity implements Serializable {
     @Id

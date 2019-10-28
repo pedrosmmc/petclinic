@@ -1,17 +1,25 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
-    private PetType petType;
+    @Column(name = "name")
     private String name;
-    private Owner owner;
+    @Column(name = "birth_date")
     private LocalDate birthDay;
+    @Column(name ="sex")
     private String sex; // male 0, female 1
+
+    @ManyToOne
+    @JoinColumn(name="type_id")
+    private PetType petType;
+
+    @ManyToOne
+    @JoinColumn(name="owner_id")
+    private Owner owner;
 
     public PetType getPetType() {
         return petType;
