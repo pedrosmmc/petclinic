@@ -5,6 +5,7 @@ import com.pedrocoelho.learningspringframework.model.Pet;
 import com.pedrocoelho.learningspringframework.services.OwnerService;
 import com.pedrocoelho.learningspringframework.services.PetService;
 import com.pedrocoelho.learningspringframework.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Profile("map-services")
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     private PetTypeService petTypeService;
     private PetService petService;
