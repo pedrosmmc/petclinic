@@ -46,8 +46,7 @@ public class OwnerDao implements OwnerService {
 
     @Override
     public Owner findById(Long id) {
-        Optional<Owner> optionalOwner = ownerRepository.findById(id);
-        return optionalOwner.orElse(null);
+        return ownerRepository.findById(id).orElse(null);
     }
 
     @Override

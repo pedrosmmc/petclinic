@@ -39,8 +39,7 @@ public class VetDao implements VetService {
 
     @Override
     public Vet findById(Long id) {
-        Optional<Vet> optionalVet = vetRepository.findById(id);
-        return optionalVet.orElse(null);
+        return vetRepository.findById(id).orElse(null);
     }
 
     @Override
