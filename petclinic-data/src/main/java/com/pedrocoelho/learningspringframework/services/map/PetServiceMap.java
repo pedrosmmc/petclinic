@@ -2,6 +2,7 @@ package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.Pet;
 import com.pedrocoelho.learningspringframework.services.PetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,14 +10,15 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Profile("map-services")
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
-    public List<Pet> findAllByName(String name) {
+    public Set<Pet> findAllByName(String name) {
         return map
                 .values()
                 .stream()
                 .filter(pet -> pet.getName().equals(name))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override

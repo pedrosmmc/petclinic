@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.services.dao;
+package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.Vet;
 import com.pedrocoelho.learningspringframework.repositories.SpecialityRepository;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class VetDao implements VetService {
+public class VetServiceImpl implements com.pedrocoelho.learningspringframework.services.VetService {
 
     private final VetRepository vetRepository;
     private final SpecialityRepository specialityRepository;
 
-    public VetDao(VetRepository vetRepository, SpecialityRepository specialityRepository) {
+    public VetServiceImpl(VetRepository vetRepository, SpecialityRepository specialityRepository) {
         this.vetRepository = vetRepository;
         this.specialityRepository = specialityRepository;
     }

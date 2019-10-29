@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.services.dao;
+package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.PetType;
 import com.pedrocoelho.learningspringframework.repositories.PetTypeRepository;
@@ -7,11 +7,11 @@ import com.pedrocoelho.learningspringframework.services.PetTypeService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PetTypeDao implements PetTypeService {
+public class PetTypeServiceImpl implements com.pedrocoelho.learningspringframework.services.PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
 
-    public PetTypeDao(PetTypeRepository petTypeRepository) {
+    public PetTypeServiceImpl(PetTypeRepository petTypeRepository) {
         this.petTypeRepository = petTypeRepository;
     }
 

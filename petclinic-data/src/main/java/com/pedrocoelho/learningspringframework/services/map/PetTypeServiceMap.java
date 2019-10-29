@@ -2,6 +2,7 @@ package com.pedrocoelho.learningspringframework.services.map;
 
 import com.pedrocoelho.learningspringframework.model.PetType;
 import com.pedrocoelho.learningspringframework.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Profile("map-services")
 public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public Set<PetType> findAll() {

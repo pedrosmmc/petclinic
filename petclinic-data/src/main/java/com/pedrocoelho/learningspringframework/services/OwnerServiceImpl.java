@@ -1,4 +1,4 @@
-package com.pedrocoelho.learningspringframework.services.dao;
+package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.repositories.OwnerRepository;
@@ -10,18 +10,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
 @Profile("jpa-services")
-public class OwnerDao implements OwnerService {
+public class OwnerServiceImpl implements OwnerService {
 
     private final OwnerRepository ownerRepository;
     private final PetRepository petRepository;
     private final PetTypeRepository petTypeRepository;
 
-    public OwnerDao(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+    public OwnerServiceImpl(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
