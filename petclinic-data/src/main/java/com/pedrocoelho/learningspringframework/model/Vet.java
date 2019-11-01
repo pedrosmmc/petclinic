@@ -10,21 +10,21 @@ import java.util.Set;
 public class Vet extends Person {
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "vet_specialities", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "Specialty"))
-    private Set<Specialty> specialities = new HashSet<>();
+    @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "Specialty"))
+    private Set<Specialty> specialties = new HashSet<>();
 
-    public Set<Specialty> getSpecialities() {
-        return specialities;
+    public Set<Specialty> getspecialties() {
+        return specialties;
     }
 
     public void addSpecialty(Specialty Specialty) {
-        this.specialities.add(Specialty);
+        this.specialties.add(Specialty);
     }
 
-    public String specialitiesToString() {
-        Iterator<Specialty> it = specialities.iterator();
+    public String specialtiesToString() {
+        Iterator<Specialty> it = specialties.iterator();
         StringBuilder out = new StringBuilder();
-        int nSpecs = specialities.size();
+        int nSpecs = specialties.size();
         while (nSpecs > 1) {
             out.append(it.next().getDenomination()).append(", ");
             nSpecs--;

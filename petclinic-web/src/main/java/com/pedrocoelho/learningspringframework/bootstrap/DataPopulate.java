@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 @Component
 public class DataPopulate implements CommandLineRunner {
@@ -107,7 +105,7 @@ public class DataPopulate implements CommandLineRunner {
         Specialty savedSurgery = specialtyService.save(surgery);
 
         Specialty dentistry = new Specialty();
-        dentistry.setDenomination("dentistry");
+        dentistry.setDenomination("Dentistry");
         Specialty savedDentistry = specialtyService.save(dentistry);
 
         Vet v1 = new Vet();

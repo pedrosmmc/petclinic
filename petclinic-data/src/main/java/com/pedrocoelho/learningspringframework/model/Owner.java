@@ -1,6 +1,9 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -25,7 +28,7 @@ public class Owner extends Person {
     }
 
     public String petsToString() {
-        if(pets.size() == 0) return "";
+        if (pets.size() == 0) return "no pets";
         Iterator<Pet> it = pets.iterator();
         StringBuilder out = new StringBuilder();
         int nPets = pets.size();

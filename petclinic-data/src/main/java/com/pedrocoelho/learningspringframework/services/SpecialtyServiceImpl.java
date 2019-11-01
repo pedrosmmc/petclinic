@@ -26,9 +26,9 @@ public class SpecialtyServiceImpl implements SpecialtyService {
 
     @Override
     public Set<Specialty> findAll() {
-        Set<Specialty> specialities = new HashSet<>();
-        SpecialtyRepository.findAll().forEach(specialities::add);
-        return specialities;
+        Set<Specialty> specialties = new HashSet<>();
+        SpecialtyRepository.findAll().forEach(specialties::add);
+        return specialties;
     }
 
     @Override
