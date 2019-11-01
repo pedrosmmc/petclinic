@@ -1,6 +1,7 @@
 package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.Owner;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

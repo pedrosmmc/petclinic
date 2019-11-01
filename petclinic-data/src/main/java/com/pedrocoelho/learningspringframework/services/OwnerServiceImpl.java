@@ -54,6 +54,13 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    public Set<Owner> saveAll(List<Owner> entities) {
+        Set<Owner> savedEntities = new HashSet<>();
+        ownerRepository.saveAll(entities).forEach(savedEntities::add);
+        return savedEntities;
+    }
+
+    @Override
     public void delete(Owner entity) {
         ownerRepository.delete(entity);
     }

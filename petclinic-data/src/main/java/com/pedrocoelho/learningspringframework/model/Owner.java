@@ -25,6 +25,7 @@ public class Owner extends Person {
     }
 
     public String petsToString() {
+        if(pets.size() == 0) return "";
         Iterator<Pet> it = pets.iterator();
         StringBuilder out = new StringBuilder();
         int nPets = pets.size();

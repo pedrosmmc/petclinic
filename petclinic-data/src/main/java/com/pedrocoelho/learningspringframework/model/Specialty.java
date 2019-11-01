@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "specialities")
-public class Speciality extends BaseEntity {
+public class Specialty extends BaseEntity {
 
     @Column(name = "denomination")
     private String denomination;

@@ -5,9 +5,9 @@ import com.pedrocoelho.learningspringframework.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Profile("map-services")
@@ -33,6 +33,13 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
     @Override
     public PetType save(PetType entity) {
         return super.save(entity);
+    }
+
+    @Override
+    public Set<PetType> saveAll(List<PetType> entities) {
+        Set<PetType> savedEntities = new HashSet<>();
+        entities.forEach(entity->savedEntities.add(this.save(entity)));
+        return savedEntities;
     }
 
     @Override

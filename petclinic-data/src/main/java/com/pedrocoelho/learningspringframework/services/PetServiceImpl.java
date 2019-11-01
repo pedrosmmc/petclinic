@@ -2,10 +2,15 @@ package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.Pet;
 import com.pedrocoelho.learningspringframework.repositories.PetRepository;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@Service
+@Profile("jpa-services")
 public class PetServiceImpl implements PetService {
 
     private final PetRepository petRepository;
@@ -34,6 +39,13 @@ public class PetServiceImpl implements PetService {
     @Override
     public Pet save(Pet entity) {
         return petRepository.save(entity);
+    }
+
+    @Override
+    public Set<Pet> saveAll(List<Pet> entities) {
+        Set<Pet> savedEntities = new HashSet<>();
+        petRepository.saveAll(entities).forEach(savedEntities::add);
+        return savedEntities;
     }
 
     @Override

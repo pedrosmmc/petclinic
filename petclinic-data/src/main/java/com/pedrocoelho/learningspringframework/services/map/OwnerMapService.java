@@ -8,6 +8,7 @@ import com.pedrocoelho.learningspringframework.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -57,13 +58,20 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
                     pet.setPetType(petTypeService.save(pet.getPetType()));
             } else throw new RuntimeException("Pet type is required");
 
-            if(pet.getId() == null) {
+            if (pet.getId() == null) {
                 Pet savedPet = petService.save(pet);
                 pet.setId(savedPet.getId());
             }
         });
 
         return super.save(entity);
+    }
+
+    @Override
+    public Set<Owner> saveAll(List<Owner> entities) {
+        Set<Owner> savedEntities = new HashSet<>();
+        entities.forEach(entity->savedEntities.add(this.save(entity)));
+        return savedEntities;
     }
 
     @Override

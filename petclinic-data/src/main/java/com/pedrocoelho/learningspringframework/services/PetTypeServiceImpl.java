@@ -2,12 +2,16 @@ package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.PetType;
 import com.pedrocoelho.learningspringframework.repositories.PetTypeRepository;
-import com.pedrocoelho.learningspringframework.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class PetTypeServiceImpl implements com.pedrocoelho.learningspringframework.services.PetTypeService {
+@Service
+@Profile("jpa-services")
+public class PetTypeServiceImpl implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
 
@@ -35,6 +39,13 @@ public class PetTypeServiceImpl implements com.pedrocoelho.learningspringframewo
     @Override
     public PetType save(PetType entity) {
         return petTypeRepository.save(entity);
+    }
+
+    @Override
+    public Set<PetType> saveAll(List<PetType> entities) {
+        Set<PetType> savedEnities = new HashSet<>();
+        petTypeRepository.saveAll(entities).forEach(savedEnities::add);
+        return savedEnities;
     }
 
     @Override

@@ -1,23 +1,25 @@
 package com.pedrocoelho.learningspringframework.services;
 
 import com.pedrocoelho.learningspringframework.model.Vet;
-import com.pedrocoelho.learningspringframework.repositories.SpecialityRepository;
+import com.pedrocoelho.learningspringframework.repositories.SpecialtyRepository;
 import com.pedrocoelho.learningspringframework.repositories.VetRepository;
-import com.pedrocoelho.learningspringframework.services.VetService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class VetServiceImpl implements com.pedrocoelho.learningspringframework.services.VetService {
+@Service
+@Profile("jpa-services")
+public class VetServiceImpl implements VetService {
 
     private final VetRepository vetRepository;
-    private final SpecialityRepository specialityRepository;
+    private final SpecialtyRepository SpecialtyRepository;
 
-    public VetServiceImpl(VetRepository vetRepository, SpecialityRepository specialityRepository) {
+    public VetServiceImpl(VetRepository vetRepository, SpecialtyRepository SpecialtyRepository) {
         this.vetRepository = vetRepository;
-        this.specialityRepository = specialityRepository;
+        this.SpecialtyRepository = SpecialtyRepository;
     }
 
     @Override
@@ -45,6 +47,13 @@ public class VetServiceImpl implements com.pedrocoelho.learningspringframework.s
     @Override
     public Vet save(Vet entity) {
         return vetRepository.save(entity);
+    }
+
+    @Override
+    public Set<Vet> saveAll(List<Vet> entities) {
+        Set<Vet> savedEntities = new HashSet<>();
+        vetRepository.saveAll(entities).forEach(savedEntities::add);
+        return savedEntities;
     }
 
     @Override

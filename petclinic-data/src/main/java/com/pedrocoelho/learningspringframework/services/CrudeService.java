@@ -1,5 +1,6 @@
 package com.pedrocoelho.learningspringframework.services;
 
+import java.util.List;
 import java.util.Set;
 
 public interface CrudeService<T, ID> {
@@ -9,7 +10,7 @@ public interface CrudeService<T, ID> {
 
     T save(T entity);
 
-//    Iterable<T> saveAll(Iterable<T> entities);
+    Set<T> saveAll(List<T> entities);
 
     void delete(T entity);
 

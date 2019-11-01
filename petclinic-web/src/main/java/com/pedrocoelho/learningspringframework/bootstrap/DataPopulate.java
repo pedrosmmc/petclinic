@@ -3,13 +3,11 @@ package com.pedrocoelho.learningspringframework.bootstrap;
 import com.pedrocoelho.learningspringframework.model.*;
 import com.pedrocoelho.learningspringframework.services.*;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,10 +15,18 @@ import java.util.Set;
 public class DataPopulate implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetService petService;
+    private final PetTypeService petTypeService;
+    private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataPopulate(OwnerService ownerService, VetService vetService) {
+    public DataPopulate(OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService, SpecialtyService SpecialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petService = petService;
+        this.petTypeService = petTypeService;
+        this.specialtyService = SpecialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -30,6 +36,8 @@ public class DataPopulate implements CommandLineRunner {
 
         PetType cat = new PetType();
         cat.setName("Cat");
+
+        petTypeService.saveAll(Arrays.asList(dog,cat));
 
         Pet p1 = new Pet();
         p1.setName("Sancho");
@@ -56,13 +64,13 @@ public class DataPopulate implements CommandLineRunner {
         p4.setSex("Female");
 
         System.out.println("Populated pets...");
+
         Owner o1 = new Owner();
         o1.setFirstName("Pablo");
         o1.setLastName("Gonzalvez");
         o1.setAddress("June Street, Oklahoma, POBox 213");
         o1.setPhoneNumber("5785474328732");
         o1.addPet(p1);
-        ownerService.save(o1);
 
         Owner o2 = new Owner();
         o2.setFirstName("Fiona");
@@ -70,52 +78,77 @@ public class DataPopulate implements CommandLineRunner {
         o2.setAddress("Travessa do Galheiro, 44, Cucujães");
         o2.setPhoneNumber("255123234");
         o2.addPet(p4);
-        ownerService.save(o2);
-
+//
         Owner o3 = new Owner();
         o3.setFirstName("Martha");
         o3.setLastName("Alvarez");
         o3.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
         o3.setPhoneNumber("123123123");
         o3.addPet(p2);
-        o3.addPet(p3);
-        ownerService.save(o3);
+//        o3.addPet(p3);
 
         Owner o4 = new Owner();
         o4.setFirstName("Raul");
         o4.setLastName("Alvarez");
         o4.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
         o4.setPhoneNumber("123123123");
-        o4.addPet(p2);
+//        o4.addPet(p2);
         o4.addPet(p3);
-        ownerService.save(o4);
+        ownerService.saveAll(Arrays.asList(o1,o2,o3,o4));
 
         System.out.println("Populated owners...");
 
-        Speciality sp1 = new Speciality();
-        sp1.setName("dog_speciality");
-        Speciality sp2 = new Speciality();
-        sp2.setName("cat_speciality");
-        Speciality sp3 = new Speciality();
-        sp3.setName("bird_speciality");
+        Specialty radiology = new Specialty();
+        radiology.setDenomination("Radiology");
+        Specialty savedRadiology = specialtyService.save(radiology);
+
+        Specialty surgery = new Specialty();
+        surgery.setDenomination("Surgery");
+        Specialty savedSurgery = specialtyService.save(surgery);
+
+        Specialty dentistry = new Specialty();
+        dentistry.setDenomination("dentistry");
+        Specialty savedDentistry = specialtyService.save(dentistry);
 
         Vet v1 = new Vet();
         v1.setFirstName("Ramirez");
         v1.setLastName("Almeida");
         v1.setAddress("Avenida do Brasil, 333, Lisboa");
         v1.setPhoneNumber("123321343");
-        v1.addSpeciality(sp1);
-        vetService.save(v1);
-
+        v1.addSpecialty(savedRadiology);
+//
         Vet v2 = new Vet();
         v2.setFirstName("Roma");
         v2.setLastName("Nowa");
         v2.setAddress("Avenia do Mercado, 12, Lixa");
         v2.setPhoneNumber("987543234");
-        v2.addSpeciality(sp2);
-        v2.addSpeciality(sp3);
-        vetService.save(v2);
+        v2.addSpecialty(savedSurgery);
+        v2.addSpecialty(savedDentistry);
+
+        vetService.saveAll(Arrays.asList(v1,v2));
 
         System.out.println("Populated vets...");
+
+        Visit visit1 = new Visit();
+        visit1.setPet(petService.findById(p1.getId()));
+        visit1.setDescription("vacinar");
+        visit1.setDate(LocalDate.of(2019,11,20));
+        visit1.setTime(LocalTime.of(12,30));
+
+        Visit visit2 = new Visit(LocalDate.of(2019,11,29), LocalTime.of(9,45));
+        visit2.setPet(p2);
+        visit2.setDescription("fratura exposta");
+
+        Visit visit3 = new Visit(LocalDate.of(2020,1,16), LocalTime.of(16,30));
+        visit3.setPet(p3);
+        visit3.setDescription("tosquia");
+
+        Visit visit4 = new Visit(LocalDate.of(2019,11,20),LocalTime.of(12,0));
+        visit4.setPet(p4);
+        visit4.setDescription("remoção de quisto");
+
+        visitService.saveAll(Arrays.asList(visit1, visit2, visit3, visit4));
+
+        System.out.println("Populated visits...");
     }
 }
