@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("map-services")
-public class VetSpecialityServiceMap extends AbstractMapService<Speciality, Long> implements VetSpecialityService {
+public class VetSpecialityMapService extends AbstractMapService<Speciality, Long> implements VetSpecialityService {
     @Override
-    public Speciality findByName(String name) {
-        return map.values().stream().filter(speciality -> speciality.getDenomination().equals(name)).findFirst().orElse(null);
+    public Speciality findByName(String denomination) {
+        return map.values().stream().filter(speciality -> speciality.getDenomination().equals(denomination)).findFirst().orElse(null);
     }
 
     @Override

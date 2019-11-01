@@ -26,10 +26,10 @@ public class Vet extends Person {
         StringBuilder out = new StringBuilder();
         int nSpecs = specialities.size();
         while (nSpecs > 1) {
-            out.append(it.next().getName()).append(", ");
+            out.append(it.next().getDenomination()).append(", ");
             nSpecs--;
         }
-        out.append(it.next().getName());
+        out.append(it.next().getDenomination());
         return out.toString();
     }
 }

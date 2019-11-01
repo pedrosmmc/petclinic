@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("map-services")
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     private VetSpecialityService vetSpecialityService;
 
-    public VetServiceMap(VetSpecialityService vetSpecialityService) {
+    public VetMapService(VetSpecialityService vetSpecialityService) {
         this.vetSpecialityService = vetSpecialityService;
     }
 

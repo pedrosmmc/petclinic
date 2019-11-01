@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Profile("map-services")
-public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
+public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public Set<PetType> findAll() {
         return super.findAll();

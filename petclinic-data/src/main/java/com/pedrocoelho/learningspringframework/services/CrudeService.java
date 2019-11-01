@@ -2,7 +2,7 @@ package com.pedrocoelho.learningspringframework.services;
 
 import java.util.Set;
 
-public interface BaseService<T, ID> {
+public interface CrudeService<T, ID> {
     Set<T> findAll();
 
     T findById(ID id);

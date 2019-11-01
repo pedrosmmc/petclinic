@@ -15,8 +15,8 @@ public class VetSpecialityServiceImpl implements VetSpecialityService {
     }
 
     @Override
-    public Speciality findByName(String name) {
-        return vetSpecialityRepository.findByName(name);
+    public Speciality findByName(String denomination) {
+        return vetSpecialityRepository.findByName(denomination);
     }
 
     @Override
