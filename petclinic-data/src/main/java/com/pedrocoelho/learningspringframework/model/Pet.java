@@ -1,8 +1,14 @@
 package com.pedrocoelho.learningspringframework.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
@@ -10,16 +16,17 @@ public class Pet extends BaseEntity {
     private String name;
     @Column(name = "birth_date")
     private LocalDate birthDay;
-    @Column(name ="sex")
+    @Column(name = "sex")
     private String sex; // male 0, female 1
 
     @ManyToOne
-    @JoinColumn(name="type_id")
+    @JoinColumn(name = "type_id")
     private PetType petType;
 
     @ManyToOne
-    @JoinColumn(name="owner_id")
+    @JoinColumn(name = "owner_id")
     private Owner owner;
+
 
     public PetType getPetType() {
         return petType;

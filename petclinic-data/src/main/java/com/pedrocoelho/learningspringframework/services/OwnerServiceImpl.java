@@ -37,6 +37,16 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    public Owner findByFirstName(String firstName) {
+        return ownerRepository.findByFirstName(firstName);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return ownerRepository.findByLastName(lastName);
+    }
+
+    @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
         ownerRepository.findAll().forEach(owners::add);

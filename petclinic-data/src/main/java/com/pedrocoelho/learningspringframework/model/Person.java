@@ -1,9 +1,19 @@
 package com.pedrocoelho.learningspringframework.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 //makes this class to not to be created as a table in the Database
 @MappedSuperclass
 public class Person extends BaseEntity {
@@ -18,6 +28,12 @@ public class Person extends BaseEntity {
     private String address;
     @Column(name = "city")
     private String city;
+
+    public Person(Long id, String firstName, String lastName) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getFirstName() {
         return firstName;
