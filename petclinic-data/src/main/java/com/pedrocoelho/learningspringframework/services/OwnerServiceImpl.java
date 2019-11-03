@@ -4,7 +4,6 @@ import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.repositories.OwnerRepository;
 import com.pedrocoelho.learningspringframework.repositories.PetRepository;
 import com.pedrocoelho.learningspringframework.repositories.PetTypeRepository;
-import com.pedrocoelho.learningspringframework.services.OwnerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
