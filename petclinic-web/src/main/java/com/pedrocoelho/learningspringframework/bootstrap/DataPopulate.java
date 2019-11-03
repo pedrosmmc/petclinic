@@ -69,6 +69,7 @@ public class DataPopulate implements CommandLineRunner {
         o1.setAddress("June Street, Oklahoma, POBox 213");
         o1.setPhoneNumber("5785474328732");
         o1.addPet(p1);
+        p1.setOwner(o1);
 
         Owner o2 = new Owner();
         o2.setFirstName("Fiona");
@@ -76,7 +77,8 @@ public class DataPopulate implements CommandLineRunner {
         o2.setAddress("Travessa do Galheiro, 44, Cucujães");
         o2.setPhoneNumber("255123234");
         o2.addPet(p4);
-//
+        p4.setOwner(o2);
+
         Owner o3 = new Owner();
         o3.setFirstName("Martha");
         o3.setLastName("Alvarez");
@@ -84,6 +86,8 @@ public class DataPopulate implements CommandLineRunner {
         o3.setPhoneNumber("123123123");
         o3.addPet(p2);
 //        o3.addPet(p3);
+        p2.setOwner(o3);
+
 
         Owner o4 = new Owner();
         o4.setFirstName("Raul");
@@ -92,6 +96,9 @@ public class DataPopulate implements CommandLineRunner {
         o4.setPhoneNumber("123123123");
 //        o4.addPet(p2);
         o4.addPet(p3);
+        p3.setOwner(o4);
+
+
         ownerService.saveAll(Arrays.asList(o1,o2,o3,o4));
 
         System.out.println("Populated owners...");

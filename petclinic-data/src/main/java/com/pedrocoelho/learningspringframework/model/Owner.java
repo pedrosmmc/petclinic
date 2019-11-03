@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "owners")
@@ -23,20 +24,15 @@ public class Owner extends Person {
         pets.add(pet);
     }
 
+    public Pet getPet(String name) {
+        return pets.stream().filter(pet->pet.getName().equals(name)).findFirst().orElse(null);
+    }
+
     public void removePet(Pet pet) {
         pets.remove(pet);
     }
 
     public String petsToString() {
-        if (pets.size() == 0) return "no pets";
-        Iterator<Pet> it = pets.iterator();
-        StringBuilder out = new StringBuilder();
-        int nPets = pets.size();
-        while (nPets > 1) {
-            out.append(it.next().getName()).append(", ");
-            nPets--;
-        }
-        out.append(it.next().getName());
-        return out.toString();
+        return pets.stream().map(Pet::getName).collect(Collectors.joining(", "));
     }
 }
