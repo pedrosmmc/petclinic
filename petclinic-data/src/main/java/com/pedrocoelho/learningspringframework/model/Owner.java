@@ -1,9 +1,6 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,9 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@NoArgsConstructor
+
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
@@ -61,4 +56,18 @@ public class Owner extends Person {
                 "pets=" + pets +
                 '}';
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Owner)) return false;
+//        if (!super.equals(o)) return false;
+//        Owner owner = (Owner) o;
+//        return Objects.equals(pets, owner.pets);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(super.hashCode(), pets);
+//    }
 }

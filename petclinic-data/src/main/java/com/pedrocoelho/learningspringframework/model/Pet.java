@@ -1,14 +1,10 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import lombok.*;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
@@ -27,6 +23,17 @@ public class Pet extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    public Pet() {
+    }
+
+    @Builder
+    public Pet(String name, LocalDate birthDay, String sex, PetType petType, Owner owner) {
+        this.name = name;
+        this.birthDay = birthDay;
+        this.sex = sex;
+        this.petType = petType;
+        this.owner = owner;
+    }
 
     public PetType getPetType() {
         return petType;
