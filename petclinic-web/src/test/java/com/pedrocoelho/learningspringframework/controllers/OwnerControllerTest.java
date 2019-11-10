@@ -4,14 +4,12 @@ import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.services.OwnerServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
@@ -31,9 +29,9 @@ class OwnerControllerTest {
     @InjectMocks
     OwnerController ownerController;
 
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
-    private Set<Owner> ownerSet;
+    Set<Owner> ownerSet;
 
     @BeforeEach
     void setUp() {
