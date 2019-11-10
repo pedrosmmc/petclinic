@@ -1,5 +1,7 @@
 package com.pedrocoelho.learningspringframework.model;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,6 +15,7 @@ public class Vet extends Person {
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "Specialty"))
     private Set<Specialty> specialties = new HashSet<>();
 
+    @Builder
     public Vet(Long id, String firstName, String lastName) {
         super(id, firstName, lastName);
     }

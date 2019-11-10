@@ -63,25 +63,19 @@ public class DataPopulate implements CommandLineRunner {
 
         System.out.println("Populated pets...");
 
-        Owner o1 = new Owner();
-        o1.setFirstName("Pablo");
-        o1.setLastName("Gonzalvez");
+        Owner o1 = Owner.builder().firstName("Pablo").lastName("Gonzalvez").build();
         o1.setAddress("June Street, Oklahoma, POBox 213");
         o1.setPhoneNumber("5785474328732");
         o1.addPet(p1);
         p1.setOwner(o1);
 
-        Owner o2 = new Owner();
-        o2.setFirstName("Fiona");
-        o2.setLastName("Martinez");
+        Owner o2 = Owner.builder().firstName("Fiona").lastName("Martinez").build();
         o2.setAddress("Travessa do Galheiro, 44, Cucujães");
         o2.setPhoneNumber("255123234");
         o2.addPet(p4);
         p4.setOwner(o2);
 
-        Owner o3 = new Owner();
-        o3.setFirstName("Martha");
-        o3.setLastName("Alvarez");
+        Owner o3 = Owner.builder().firstName("Martha").lastName("Alvarez").build();
         o3.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
         o3.setPhoneNumber("123123123");
         o3.addPet(p2);
@@ -89,9 +83,7 @@ public class DataPopulate implements CommandLineRunner {
         p2.setOwner(o3);
 
 
-        Owner o4 = new Owner();
-        o4.setFirstName("Raul");
-        o4.setLastName("Alvarez");
+        Owner o4 = Owner.builder().firstName("Raul").lastName("Alvarez").build();
         o4.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
         o4.setPhoneNumber("123123123");
 //        o4.addPet(p2);
@@ -115,16 +107,12 @@ public class DataPopulate implements CommandLineRunner {
         dentistry.setDenomination("Dentistry");
         Specialty savedDentistry = specialtyService.save(dentistry);
 
-        Vet v1 = new Vet();
-        v1.setFirstName("Ramirez");
-        v1.setLastName("Almeida");
+        Vet v1 = Vet.builder().firstName("Ramirez").lastName("Almeida").build();
         v1.setAddress("Avenida do Brasil, 333, Lisboa");
         v1.setPhoneNumber("123321343");
         v1.addSpecialty(savedRadiology);
 //
-        Vet v2 = new Vet();
-        v2.setFirstName("Roma");
-        v2.setLastName("Nowa");
+        Vet v2 = Vet.builder().firstName("Roma").lastName("Nowa").build();
         v2.setAddress("Avenia do Mercado, 12, Lixa");
         v2.setPhoneNumber("987543234");
         v2.addSpecialty(savedSurgery);
