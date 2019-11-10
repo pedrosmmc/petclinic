@@ -1,11 +1,11 @@
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/VisitService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/VetService.java
+/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/SpecialtyMapService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Owner.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/OwnerRepository.java
-/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Speciality.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/VetMapService.java
-/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/SpecialityRepository.java
-/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/SpecialityService.java
+/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/SpecialtyRepository.java
+/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/SpecialtyServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/PetTypeMapService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/VetRepository.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/OwnerMapService.java
@@ -16,10 +16,10 @@
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/PetService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/CrudeService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/VisitRepository.java
-/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/SpecialityMapService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Person.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/OwnerServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/OwnerService.java
+/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Specialty.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/PetMapService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/PetType.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Pet.java
@@ -27,9 +27,9 @@
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/PetServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/Vet.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/repositories/PetRepository.java
+/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/SpecialtyService.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/VetServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/VisitServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/PetTypeServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/map/VisitMapService.java
-/home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/services/SpecialityServiceImpl.java
 /home/pedrocoelho/Workspaces/intelliJ-workspace/petclinic/petclinic-data/src/main/java/com/pedrocoelho/learningspringframework/model/BaseEntity.java

@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.pedrocoelho.learningspringframework.PetClinicApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.482 s <<< FAILURE! - in com.pedrocoelho.learningspringframework.PetClinicApplicationTests
-contextLoads(com.pedrocoelho.learningspringframework.PetClinicApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'basicErrorController' method 
-public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-to { /error}: There is already 'indexController' bean method
-public java.lang.String com.pedrocoelho.learningspringframework.controllers.IndexController.error() mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'basicErrorController' method 
-public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-to { /error}: There is already 'indexController' bean method
-public java.lang.String com.pedrocoelho.learningspringframework.controllers.IndexController.error() mapped.
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.255 s - in com.pedrocoelho.learningspringframework.PetClinicApplicationTests
