@@ -3,14 +3,15 @@ package com.pedrocoelho.learningspringframework.repositories;
 import com.pedrocoelho.learningspringframework.model.Owner;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
-    List<Owner> findAllByFirstName(String firstName);
+    Set<Owner> findAllByFirstName(String firstName);
 
-    List<Owner> findAllByLastName(String lastName);
+    Set<Owner> findAllByLastName(String lastName);
 
-    Owner findByFirstName(String firstName);
+    Optional<Owner> findByFirstName(String firstName);
 
-    Owner findByLastName(String lastName);
+    Optional<Owner> findByLastName(String lastName);
 }

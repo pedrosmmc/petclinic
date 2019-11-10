@@ -26,23 +26,23 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public List<Owner> findAllByFirstName(String firstName) {
+    public Set<Owner> findAllByFirstName(String firstName) {
         return ownerRepository.findAllByFirstName(firstName);
     }
 
     @Override
-    public List<Owner> findAllByLastName(String lastName) {
+    public Set<Owner> findAllByLastName(String lastName) {
         return ownerRepository.findAllByLastName(lastName);
     }
 
     @Override
     public Owner findByFirstName(String firstName) {
-        return ownerRepository.findByFirstName(firstName);
+        return ownerRepository.findByFirstName(firstName).orElse(null);
     }
 
     @Override
     public Owner findByLastName(String lastName) {
-        return ownerRepository.findByLastName(lastName);
+        return ownerRepository.findByLastName(lastName).orElse(null);
     }
 
     @Override

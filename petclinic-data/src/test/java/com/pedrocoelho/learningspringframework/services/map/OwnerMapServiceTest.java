@@ -7,8 +7,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,19 +70,21 @@ class OwnerMapServiceTest {
 
     @Test
     void findAllByFirstName() {
-        Owner owner = ownerMapService.findAllByFirstName(firstName).get(0);
+        Owner owner = new ArrayList<>(ownerMapService.findAllByFirstName(firstName)).get(0);
         assertNotNull(owner);
         assertEquals(owner.getFirstName(), firstName);
     }
 
     @Test
     void findAllByLastName() {
-        assertEquals(ownerMapService.findAllByLastName(lastName).get(0).getLastName(), lastName);
+        Owner owner = ownerMapService.findAllByLastName(lastName).stream().collect(Collectors.toList()).get(0);
+        assertEquals(owner.getLastName(), lastName);
+
     }
 
     @Test
     void findByFirstName() {//Todo
-        Owner owner = ownerMapService.findAllByFirstName(firstName).get(0);
+        Owner owner = ownerMapService.findByFirstName(firstName);
         assertNotNull(owner);
         assertEquals(owner.getFirstName(), firstName);
     }

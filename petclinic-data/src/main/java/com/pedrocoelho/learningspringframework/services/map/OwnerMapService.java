@@ -25,15 +25,15 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    public List<Owner> findAllByFirstName(String firstName) {
+    public Set<Owner> findAllByFirstName(String firstName) {
         return map.values().stream().filter(owner -> owner.getFirstName().equals(firstName))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override
-    public List<Owner> findAllByLastName(String lastName) {
+    public Set<Owner> findAllByLastName(String lastName) {
         return map.values().stream().filter(owner -> owner.getLastName().equals(lastName))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override
