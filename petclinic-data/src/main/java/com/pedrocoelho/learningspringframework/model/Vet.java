@@ -20,6 +20,10 @@ public class Vet extends Person {
         super(id, firstName, lastName);
     }
 
+    public Vet() {
+        super();
+    }
+
     public Set<Specialty> getspecialties() {
         return specialties;
     }

@@ -1,6 +1,6 @@
 package com.pedrocoelho.learningspringframework.model;
 
-import lombok.*;
+import lombok.Builder;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,10 +21,17 @@ public class Owner extends Person {
     @Builder
     public Owner(Long id, String firstName, String lastName, Set<Pet> pets) {
         super(id, firstName, lastName);
-
         if (pets != null) {
             this.pets = pets;
         }
+    }
+
+    public Owner(Long id, String firstName, String lastName) {
+        super(id, firstName, lastName);
+    }
+
+    public Owner() {
+        super();
     }
 
     public Set<Pet> getPets() {
