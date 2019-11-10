@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
