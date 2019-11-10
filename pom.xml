@@ -26,6 +26,10 @@
         <start-class>
             com.pedrocoelho.learningspringframework.PetClinicApplication
         </start-class>
+        <properties>
+            <maven.compiler.source>12</maven.compiler.source>
+            <maven.compiler.target>12</maven.compiler.target>
+        </properties>
     </properties>
 
     <dependencies>
