@@ -13,7 +13,7 @@
     <bytecodeTargetLevel target="12">
       <module name="petclinic" target="12" />
       <module name="petclinic-data" target="12" />
-      <module name="petclinic-web" target="1.8" />
+      <module name="petclinic-web" target="12" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
