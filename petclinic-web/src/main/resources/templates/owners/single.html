@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner's List</title>
+</head>
+<body>
+<!--/*@thymesVar id="owner" type="com.pedrocoelho.learningspringframework.model.Owner"*/-->
+<h1><span th:text="${owner?.getFirstName()}"></span>
+    <span th:text="${owner?.getLastName()}"></span>
+</h1>
+
+<h5><span class="text-info " th:text="'Id '">Id </span></span><span th:text="${owner?.getId()}">123</span></h5>
+<h5><span class="text-info" th:text="'Phone Number '">Phone Number </span><span th:text="${owner?.getPhoneNumber()}">4798345789</span></h5>
+<h5><span class="text-info" th:text="'Address '">Address </span><span th:text="${owner?.getAddress()}">Calhe de la hora, 234, Madrid</span></h5>
+<h5 class="mt-2"><span class="text-info" th:text="'Subscribed pets '">Subscribed pets</span><span th:text="'(' + ${owner?.pets.size()} + ')'">(2)</span></h5>
+<table id="owners_pets" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Sex</th>
+        <th>BirthDay</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pet:${owner?.pets}">
+        <td th:text="${pet?.id}">123</td>
+        <td th:text="${pet?.name}">Pancho</td>
+        <td th:text="${pet?.getPetType().getName()}">Dog</td>
+        <td th:text="${pet?.sex}">Male</td>
+        <td th:text="${pet?.birthDay}">12/10/2019</td>
+    </tr>
+    <tbody>
+</table>
+
+</body>
+</html>
