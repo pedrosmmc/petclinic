@@ -1,13 +1,14 @@
 package com.pedrocoelho.learningspringframework.controllers;
 
+import com.pedrocoelho.learningspringframework.model.Owner;
 import com.pedrocoelho.learningspringframework.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RequestMapping("/owners")
 @Controller
@@ -26,7 +27,6 @@ public class OwnerController {
     @RequestMapping()
     public String getOwners(Model model) {
         model.addAttribute("owners", ownerService.findAll());
-
         return "owners/index";
     }
 
@@ -36,8 +36,23 @@ public class OwnerController {
         return "owners/single";
     }
 
-//    @RequestMapping("/find")
-//    public String findOwners(@PathVariable ) {
-//        return "";
-//    }
+    @RequestMapping("/find")
+    public String findOwnersByFirstName(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName, Model model) {
+        if (firstName != null & lastName != null) {
+            Set<Owner> filteredOwners = ownerService.findAllByFirstName(firstName).stream().filter(owner -> owner.getLastName().equals(lastName)).collect(Collectors.toSet());
+            model.addAttribute("owners", filteredOwners);
+        }
+
+        if(lastName == null) {
+            model.addAttribute("owners", ownerService.findAllByFirstName(firstName));
+        }
+
+        if(firstName == null) { // condition not needed
+            model.addAttribute("owners", ownerService.findAllByLastName(lastName));
+        }
+
+        model.addAttribute("owners", ownerService.findAll());
+
+        return "owners/index";
+    }
 }

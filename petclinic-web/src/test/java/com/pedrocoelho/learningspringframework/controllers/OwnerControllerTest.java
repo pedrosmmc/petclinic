@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.quality.Strictness;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -31,16 +32,20 @@ class OwnerControllerTest {
     @InjectMocks
     OwnerController ownerController;
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-    Set<Owner> ownerSet;
+    private Set<Owner> ownerSet;
+    private Owner o1;
+    private Owner o2;
+    private Owner o3;
+    private Owner o4;
 
     @BeforeEach
     void setUp() throws NoSuchAlgorithmException {
-        Owner o1 = Owner.builder().id(333L).firstName("Leo").lastName("Salut").build();
-        Owner o2 = Owner.builder().id(334L).firstName("Luka").lastName("Modric").build();
-        Owner o3 = Owner.builder().id(335L).firstName("Leo").lastName("Fonseca").build();
-        Owner o4 = Owner.builder().id(336L).firstName("Sandro").lastName("Modric").build();
+        o1 = Owner.builder().id(333L).firstName("Leo").lastName("Salut").build();
+        o2 = Owner.builder().id(334L).firstName("Luka").lastName("Modric").build();
+        o3 = Owner.builder().id(335L).firstName("Leo").lastName("Fonseca").build();
+        o4 = Owner.builder().id(336L).firstName("Sandro").lastName("Modric").build();
         ownerSet = new HashSet<>(Arrays.asList(o1, o2, o3, o4));
 
         mockMvc = MockMvcBuilders
@@ -62,42 +67,45 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/index"))
                 .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
 
-        verify(ownerService,times(1)).findAll();
+        verify(ownerService, times(1)).findAll();
     }
 
     @Test
-    void findOwnersReturnMany() throws Exception {
-        when(ownerService.findAllByFirstName(anyString())).thenReturn(ownerSet);
+    void findOwnersByFirsNameReturnMany() throws Exception {
+        Set<Owner> owners = new HashSet<>(Arrays.asList(o1, o3));
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(owners);
 
-        mockMvc.perform(get("/owners/find"))
+        mockMvc.perform(get("/owners/find?firstName=Leo"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/owners/find"))
-        .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
+                .andExpect(view().name("owners/index"))
+                .andExpect(model().attribute("owners", hasSize(2)));
 
-        verify(ownerService, times(2)).findAll();
+        verify(ownerService, times(1)).findAllByFirstName(anyString());
     }
 
     @Test
-    void findOwnersReturnOne() throws Exception {
-        when(ownerService.findAllByFirstName(anyString())).thenReturn(ownerSet);
+    void findOwnersByFirsNameReturnOne() throws Exception {
+        Set<Owner> owners = new HashSet<>(Collections.singletonList(Owner.builder().id(222L).firstName("Test").lastName("Owner").build()));
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(owners);
 
-        mockMvc.perform(get("/owners/find"))
+        mockMvc.perform(get("/owners/find?firstName=Luka"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/owners/find"))
-                .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
+                .andExpect(view().name("owners/index"))
+                .andExpect(model().attribute("owners", hasSize(owners.size())));
 
-        verify(ownerService, times(2)).findAll();
+        verify(ownerService, times(1)).findAllByFirstName(anyString());
     }
 
     @Test
-    void findOwnersReturnZero() throws Exception {
-        when(ownerService.findAllByFirstName(anyString())).thenReturn(Collections.emptySet());
+    void findOwnersByFirsNameReturnZero() throws Exception {
+        Set<Owner> owners = Collections.emptySet();
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(owners);
 
-        mockMvc.perform(get("/owners/find"))
+        mockMvc.perform(get("/owners/find?firstName=Sven"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/owners/find"))
-                .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
+                .andExpect(view().name("owners/index"))
+                .andExpect(model().attribute("owners", hasSize(owners.size())));
 
-        verify(ownerService, times(2)).findAll();
+        verify(ownerService, times(1)).findAllByFirstName(anyString());
     }
 }

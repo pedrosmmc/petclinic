@@ -7,7 +7,8 @@
 </head>
 <body>
 <!--/*@thymesVar id="owner" type="com.pedrocoelho.learningspringframework.model.Owner"*/-->
-<h1 th:text="${owner?.getFirstName()} + ' ' + ${owner?.getLastName()} + ' (' + ${owner?.getReference()} + ')'"></h1>
+<h1 th:text="${owner?.getFirstName()} + ' ' + ${owner?.getLastName()}"></h1>
+<span class="text-success text-lowercase" style="float: right;" th:text="${owner?.getReference()}">6dff3697a5f32039b263522b1fa91163</span>
 <h5><span class="text-info" th:text="'Phone Number '">Phone Number </span><span th:text="${owner?.getPhoneNumber()}">4798345789</span></h5>
 <h5><span class="text-info" th:text="'Address '">Address </span><span th:text="${owner?.getAddress()}">Calhe de la hora, 234, Madrid</span></h5>
 <h5 class="mt-2"><span class="text-info" th:text="'Subscribed pets '">Subscribed pets</span><span th:text="'(' + ${owner?.pets.size()} + ')'">(2)</span></h5>

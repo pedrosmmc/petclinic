@@ -75,6 +75,12 @@ public class DataPopulate implements CommandLineRunner {
         p6.setPetType(dog);
         p6.setSex("Female");
 
+        Pet p7 = new Pet();
+        p7.setName("Lalika");
+        p7.setBirthDay(LocalDate.of(2016, 11, 16));
+        p7.setPetType(cat);
+        p7.setSex("Female");
+
         System.out.println("Populated pets...");
 
         Owner o1 = Owner.builder().firstName("Pablo").lastName("Gonzalvez").build();
@@ -105,12 +111,16 @@ public class DataPopulate implements CommandLineRunner {
         Owner o4 = Owner.builder().firstName("Raul").lastName("Alvarez").build();
         o4.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
         o4.setPhoneNumber("123123123");
-//        o4.addPet(p2);
         o4.addPet(p3);
         p3.setOwner(o4);
 
+        Owner o5 = Owner.builder().firstName("Raul").lastName("Antunes").build();
+        o5.setAddress("Rua da Fragata, 33, Los Angeles, Braga");
+        o5.setPhoneNumber("8456065454");
+        o5.addPet(p7);
+        p7.setOwner(o5);
 
-        ownerService.saveAll(Arrays.asList(o1, o2, o3, o4));
+        ownerService.saveAll(Arrays.asList(o1, o2, o3, o4,o5));
 
         System.out.println("Populated owners...");
 
