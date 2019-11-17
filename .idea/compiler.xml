@@ -18,7 +18,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="petclinic" options="-parameters" />
+      <module name="petclinic" options="" />
       <module name="petclinic-data" options="-parameters" />
       <module name="petclinic-web" options="-parameters" />
     </option>

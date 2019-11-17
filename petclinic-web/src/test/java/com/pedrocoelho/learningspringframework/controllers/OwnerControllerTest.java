@@ -66,10 +66,13 @@ class OwnerControllerTest {
 
     @Test
     void findOwners() throws Exception {
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(ownerSet);
+
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("not_implemented"));
+                .andExpect(view().name("/owners/find"))
+        .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
 
-        verifyZeroInteractions(ownerService);
+        verify(ownerService, times(2)).findAll();
     }
 }

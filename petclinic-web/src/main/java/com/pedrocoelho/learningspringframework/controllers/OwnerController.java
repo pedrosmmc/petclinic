@@ -30,15 +30,14 @@ public class OwnerController {
         return "owners/index";
     }
 
-    @RequestMapping("/find")
-    public String findOwners() {
-
-        return "not_implemented";
-    }
-
     @RequestMapping("/{id}")
     public String getOwnerById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("owner", ownerService.findById(id));
         return "owners/single";
     }
+
+//    @RequestMapping("/find")
+//    public String findOwners(@PathVariable ) {
+//        return "";
+//    }
 }
