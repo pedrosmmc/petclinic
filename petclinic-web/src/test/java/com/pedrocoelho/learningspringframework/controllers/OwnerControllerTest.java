@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -65,13 +66,37 @@ class OwnerControllerTest {
     }
 
     @Test
-    void findOwners() throws Exception {
+    void findOwnersReturnMany() throws Exception {
         when(ownerService.findAllByFirstName(anyString())).thenReturn(ownerSet);
 
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("/owners/find"))
         .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
+
+        verify(ownerService, times(2)).findAll();
+    }
+
+    @Test
+    void findOwnersReturnOne() throws Exception {
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(ownerSet);
+
+        mockMvc.perform(get("/owners/find"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/owners/find"))
+                .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
+
+        verify(ownerService, times(2)).findAll();
+    }
+
+    @Test
+    void findOwnersReturnZero() throws Exception {
+        when(ownerService.findAllByFirstName(anyString())).thenReturn(Collections.emptySet());
+
+        mockMvc.perform(get("/owners/find"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/owners/find"))
+                .andExpect(model().attribute("owners", hasSize(ownerSet.size())));
 
         verify(ownerService, times(2)).findAll();
     }
