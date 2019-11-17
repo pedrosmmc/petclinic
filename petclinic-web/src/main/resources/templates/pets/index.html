@@ -10,7 +10,7 @@
 <table id="owners" class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
+        <th>Reference</th>
         <th>Name</th>
         <th>Birthday</th>
         <th>Type</th>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="pet:${pets}">
-        <td th:text="${pet?.id}">123</td>
+        <td th:text="${pet?.getReference()}">123</td>
         <td th:text="${pet?.name}">Robin</td>
         <td th:text="${pet?.birthDay}"></td>
         <td th:text="${pet?.petType?.name}"></td>

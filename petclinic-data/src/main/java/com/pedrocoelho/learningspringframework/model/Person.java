@@ -88,21 +88,21 @@ public class Person extends BaseEntity {
                 '}';
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Person)) return false;
-//        if (!super.equals(o)) return false;
-//        Person person = (Person) o;
-//        return Objects.equals(firstName, person.firstName) &&
-//                Objects.equals(lastName, person.lastName) &&
-//                Objects.equals(phoneNumber, person.phoneNumber) &&
-//                Objects.equals(address, person.address) &&
-//                Objects.equals(city, person.city);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, address, city);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        if (!super.equals(o)) return false;
+        Person person = (Person) o;
+        return Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(phoneNumber, person.phoneNumber) &&
+                Objects.equals(address, person.address) &&
+                Objects.equals(city, person.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, address, city);
+    }
 }

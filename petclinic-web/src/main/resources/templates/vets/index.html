@@ -10,7 +10,7 @@
 <table id="owners" class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
+        <th>Reference</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Address</th>
@@ -20,7 +20,7 @@
     </thead>
     <tbody>
     <tr th:each="vet:${vets}">
-        <td th:text="${vet?.id}">123</td>
+        <td th:text="${vet?.getReference()}">123</td>
         <td th:text="${vet?.firstName}">G</td>
         <td th:text="${vet?.lastName}">Lo</td>
         <td th:text="${vet?.address}">Travessa do Poço, 99, Coimbra</td>

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,7 +27,7 @@ class OwnerMapServiceTest {
     OwnerMapService ownerMapService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchAlgorithmException {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
 
         PetType pt1 = new PetType("kitty");
@@ -119,7 +120,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void save() {
+    void save() throws NoSuchAlgorithmException {
         Owner o4 = Owner.builder()
                 .id(332L)
                 .firstName("Sofia")
@@ -133,7 +134,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void saveAll() {
+    void saveAll() throws NoSuchAlgorithmException {
         Owner o4 = Owner.builder()
                 .id(332L)
                 .firstName("Sofia")
@@ -154,7 +155,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void saveExistingId() {
+    void saveExistingId() throws NoSuchAlgorithmException {
         Owner o6 = ownerMapService.save(Owner.builder()
                 .id(ownerId)
                 .firstName("Rangner")
@@ -167,7 +168,7 @@ class OwnerMapServiceTest {
     }
 
     @Test
-    void saveNoId() {
+    void saveNoId() throws NoSuchAlgorithmException {
         Owner o7 = ownerMapService.save(Owner.builder()
                 .firstName("Scofield")
                 .lastName("John")

@@ -1,8 +1,12 @@
 package com.pedrocoelho.learningspringframework.model;
 
 import lombok.Builder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import javax.persistence.*;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -16,12 +20,14 @@ public class Vet extends Person {
     private Set<Specialty> specialties = new HashSet<>();
 
     @Builder
-    public Vet(Long id, String firstName, String lastName) {
+    public Vet(Long id, String firstName, String lastName) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
+        super.setReference(this.generateReference());
     }
 
-    public Vet() {
+    public Vet() throws NoSuchAlgorithmException {
         super();
+        super.setReference(this.generateReference());
     }
 
     public Set<Specialty> getspecialties() {
@@ -42,5 +48,12 @@ public class Vet extends Person {
         }
         out.append(it.next().getDenomination());
         return out.toString();
+    }
+
+    public String generateReference() throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(ReflectionToStringBuilder.toString(this).getBytes());
+        byte[] digest = md.digest();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 }

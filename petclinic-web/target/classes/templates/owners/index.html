@@ -21,7 +21,7 @@
     </thead>
     <tbody>
     <tr th:each="owner:${owners}">
-        <td th:text="${owner?.id}">123</td>
+        <td th:text="${owner?.getReference()}">123</td>
         <td th:text="${owner?.firstName}">Peter</td>
         <td th:text="${owner?.lastName}">Pan</td>
         <td th:text="${owner?.address}">Calhe de Barrio, 123, Madrid</td>

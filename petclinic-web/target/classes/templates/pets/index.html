@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="pet:${pets}">
-        <td th:text="${pet?.id}">123</td>
+        <td th:text="${pet?.getReference()}">123</td>
         <td th:text="${pet?.name}">Robin</td>
         <td th:text="${pet?.birthDay}"></td>
         <td th:text="${pet?.petType?.name}"></td>

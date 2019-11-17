@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +35,7 @@ class OwnerControllerTest {
     Set<Owner> ownerSet;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchAlgorithmException {
         Owner o1 = Owner.builder().id(333L).firstName("Leo").lastName("Salut").build();
         Owner o2 = Owner.builder().id(334L).firstName("Luka").lastName("Modric").build();
         Owner o3 = Owner.builder().id(335L).firstName("Leo").lastName("Fonseca").build();

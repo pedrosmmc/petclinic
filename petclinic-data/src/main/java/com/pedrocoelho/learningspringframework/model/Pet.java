@@ -1,9 +1,14 @@
 package com.pedrocoelho.learningspringframework.model;
 
 import lombok.Builder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import javax.persistence.*;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pets")
@@ -23,16 +28,19 @@ public class Pet extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    public Pet() {
+    public Pet() throws NoSuchAlgorithmException {
+        super();
+        super.setReference(this.generateReference());
     }
 
     @Builder
-    public Pet(String name, LocalDate birthDay, String sex, PetType petType, Owner owner) {
+    public Pet(String name, LocalDate birthDay, String sex, PetType petType, Owner owner) throws NoSuchAlgorithmException {
         this.name = name;
         this.birthDay = birthDay;
         this.sex = sex;
         this.petType = petType;
         this.owner = owner;
+        super.setReference(this.generateReference());
     }
 
     public PetType getPetType() {
@@ -80,5 +88,29 @@ public class Pet extends BaseEntity {
         return "Pet{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pet)) return false;
+        Pet pet = (Pet) o;
+        return Objects.equals(name, pet.name) &&
+                Objects.equals(birthDay, pet.birthDay) &&
+                Objects.equals(sex, pet.sex) &&
+                Objects.equals(petType, pet.petType) &&
+                Objects.equals(owner, pet.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, birthDay, sex, petType, owner);
+    }
+
+    public String generateReference() throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(ReflectionToStringBuilder.toString(this).getBytes());
+        byte[] digest = md.digest();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 }

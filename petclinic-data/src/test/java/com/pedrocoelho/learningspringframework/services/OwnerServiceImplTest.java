@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 import static java.time.Duration.ofMillis;
@@ -38,7 +39,7 @@ class OwnerServiceImplTest {
     Owner returnOwner;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchAlgorithmException {
         returnOwner = Owner.builder().id(ID).firstName(FIRST_NAME).lastName(LAST_NAME).build();
     }
 
@@ -47,7 +48,7 @@ class OwnerServiceImplTest {
     }
 
     @Test
-    void findAll() {
+    void findAll() throws NoSuchAlgorithmException {
         Set<Owner> ownerSet = new HashSet<>();
         ownerSet.add(Owner.builder().id(334L).firstName("Rúben").lastName("Cabrito").build());
         ownerSet.add(Owner.builder().id(335L).firstName("Cristiana").lastName("Cabrito").build());
@@ -69,7 +70,7 @@ class OwnerServiceImplTest {
     }
 
     @Test
-    void findAllByFirstName() {
+    void findAllByFirstName() throws NoSuchAlgorithmException {
         Owner o1 = Owner.builder().id(777L).firstName(FIRST_NAME).lastName("Pan").build();
 
         when(ownerRepository.findAllByFirstName(FIRST_NAME)).thenReturn(new HashSet<>(Arrays.asList(returnOwner, o1)));
@@ -86,7 +87,7 @@ class OwnerServiceImplTest {
     }
 
     @Test
-    void findAllByLastName() {
+    void findAllByLastName() throws NoSuchAlgorithmException {
         Owner o2 = Owner.builder().id(778L).firstName("Peter").lastName(LAST_NAME).build();
 
         when(ownerRepository.findAllByLastName(LAST_NAME)).thenReturn(new HashSet<>(Arrays.asList(returnOwner, o2)));
@@ -158,7 +159,7 @@ class OwnerServiceImplTest {
     }
 
     @Test
-    void saveAll() {
+    void saveAll() throws NoSuchAlgorithmException {
         List<Owner> returnOwners = new ArrayList<>(
                 Arrays.asList(
                         returnOwner,

@@ -7,11 +7,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="owner" type="com.pedrocoelho.learningspringframework.model.Owner"*/-->
-<h1><span th:text="${owner?.getFirstName()}"></span>
-    <span th:text="${owner?.getLastName()}"></span>
-</h1>
-
-<h5><span class="text-info " th:text="'Id '">Id </span></span><span th:text="${owner?.getId()}">123</span></h5>
+<h1 th:text="${owner?.getFirstName()} + ' ' + ${owner?.getLastName()} + ' (' + ${owner?.getReference()} + ')'"></h1>
 <h5><span class="text-info" th:text="'Phone Number '">Phone Number </span><span th:text="${owner?.getPhoneNumber()}">4798345789</span></h5>
 <h5><span class="text-info" th:text="'Address '">Address </span><span th:text="${owner?.getAddress()}">Calhe de la hora, 234, Madrid</span></h5>
 <h5 class="mt-2"><span class="text-info" th:text="'Subscribed pets '">Subscribed pets</span><span th:text="'(' + ${owner?.pets.size()} + ')'">(2)</span></h5>
@@ -27,11 +23,11 @@
     </thead>
     <tbody>
     <tr th:each="pet:${owner?.pets}">
-        <td th:text="${pet?.id}">123</td>
-        <td th:text="${pet?.name}">Pancho</td>
+        <td th:text="${pet?.hashCode()}">123</td>
+        <td th:text="${pet?.getName()}">Pancho</td>
         <td th:text="${pet?.getPetType().getName()}">Dog</td>
-        <td th:text="${pet?.sex}">Male</td>
-        <td th:text="${pet?.birthDay}">12/10/2019</td>
+        <td th:text="${pet?.getSex()}">Male</td>
+        <td th:text="${pet?.getBirthDay()}">12/10/2019</td>
     </tr>
     <tbody>
 </table>

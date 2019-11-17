@@ -1,12 +1,17 @@
 package com.pedrocoelho.learningspringframework.model;
 
 import lombok.Builder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,19 +24,23 @@ public class Owner extends Person {
     private Set<Pet> pets = new HashSet<>();
 
     @Builder
-    public Owner(Long id, String firstName, String lastName, Set<Pet> pets) {
+    public Owner(Long id, String firstName, String lastName, Set<Pet> pets) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
         if (pets != null) {
             this.pets = pets;
         }
+        super.setReference(this.generateReference());
+        System.out.println(this.getReference());
     }
 
-    public Owner(Long id, String firstName, String lastName) {
+    public Owner(Long id, String firstName, String lastName) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
+        super.setReference(this.generateReference());
     }
 
-    public Owner() {
+    public Owner() throws NoSuchAlgorithmException {
         super();
+        super.setReference(this.generateReference());
     }
 
     public Set<Pet> getPets() {
@@ -58,23 +67,39 @@ public class Owner extends Person {
     public String toString() {
         return "Owner{" +
                 "id=" + this.getId() + ", " +
+                "reference=" + this.getReference() + ", " +
                 "firstName=" + this.getFirstName() + ", " +
                 "lastName=" + this.getLastName() + ", " +
                 "pets=" + pets +
                 '}';
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Owner)) return false;
-//        if (!super.equals(o)) return false;
-//        Owner owner = (Owner) o;
-//        return Objects.equals(pets, owner.pets);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(super.hashCode(), pets);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Owner)) return false;
+        if (!super.equals(o)) return false;
+        Owner owner = (Owner) o;
+        return Objects.equals(pets, owner.pets);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode());
+    }
+
+    public String generateReference() throws NoSuchAlgorithmException {
+
+        String mdString = this.getFirstName()
+                + this.getLastName()
+                + this.getAddress()
+                + this.getCity()
+                + this.getPhoneNumber()
+                + this.getId();
+
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(mdString.getBytes());
+        byte[] digest = md.digest();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
+    }
 }
