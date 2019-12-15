@@ -36,6 +36,18 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
                 .collect(Collectors.toList());
     }
 
+    //TODO
+    @Override
+    public Vet findByFirstName(String firstName) {
+        return null;
+    }
+
+    //TODO
+    @Override
+    public Vet findByLastName(String lastName) {
+        return null;
+    }
+
     @Override
     public Set<Vet> findAll() {
         return super.findAll();

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -30,6 +31,16 @@ public class VetServiceImpl implements VetService {
     @Override
     public List<Vet> findAllByLastName(String lastName) {
         return vetRepository.findAllByLastName(lastName);
+    }
+
+    @Override
+    public Vet findByFirstName(String firstName) {
+        return vetRepository.findByFirstName(firstName).orElse(null);
+    }
+
+    @Override
+    public Vet findByLastName(String lastName) {
+        return vetRepository.findByFirstName(lastName).orElse(null);
     }
 
     @Override

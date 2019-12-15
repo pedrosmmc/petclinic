@@ -1,14 +1,8 @@
 package com.pedrocoelho.learningspringframework.model;
 
 import lombok.Builder;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.DatatypeConverter;
-import java.security.MessageDigest;
+import javax.persistence.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Objects;
@@ -23,6 +17,10 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Builder
     public Owner(Long id, String firstName, String lastName, Set<Pet> pets) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
@@ -33,7 +31,6 @@ public class Owner extends Person {
         String mdString = this.getFirstName()
                 + this.getLastName()
                 + this.getAddress()
-                + this.getCity()
                 + this.getPhoneNumber()
                 + this.getId();
 
@@ -46,7 +43,6 @@ public class Owner extends Person {
         String mdString = this.getFirstName()
                 + this.getLastName()
                 + this.getAddress()
-                + this.getCity()
                 + this.getPhoneNumber()
                 + this.getId();
 
@@ -77,6 +73,18 @@ public class Owner extends Person {
 
     public String petsToString() {
         return pets.stream().map(Pet::getName).collect(Collectors.joining(", "));
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

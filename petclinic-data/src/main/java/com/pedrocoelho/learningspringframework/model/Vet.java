@@ -19,13 +19,16 @@ public class Vet extends Person {
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"), inverseJoinColumns = @JoinColumn(name = "Specialty"))
     private Set<Specialty> specialties = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Builder
     public Vet(Long id, String firstName, String lastName) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
         String mdString = this.getFirstName()
                 + this.getLastName()
                 + this.getAddress()
-                + this.getCity()
                 + this.getPhoneNumber()
                 + this.getId();
 
@@ -55,6 +58,22 @@ public class Vet extends Person {
         }
         out.append(it.next().getDenomination());
         return out.toString();
+    }
+
+    public Set<Specialty> getSpecialties() {
+        return specialties;
+    }
+
+    public void setSpecialties(Set<Specialty> specialties) {
+        this.specialties = specialties;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String generateReference() throws NoSuchAlgorithmException {

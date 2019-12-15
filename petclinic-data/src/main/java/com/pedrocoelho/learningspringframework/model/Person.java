@@ -1,11 +1,6 @@
 package com.pedrocoelho.learningspringframework.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
@@ -22,10 +17,6 @@ public class Person extends BaseEntity {
     private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "address")
-    private String address;
-    @Column(name = "city")
-    private String city;
 
     public Person() {
         super();
@@ -61,30 +52,12 @@ public class Person extends BaseEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     @Override
     public String toString() {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
                 '}';
     }
 
@@ -96,13 +69,11 @@ public class Person extends BaseEntity {
         Person person = (Person) o;
         return Objects.equals(firstName, person.firstName) &&
                 Objects.equals(lastName, person.lastName) &&
-                Objects.equals(phoneNumber, person.phoneNumber) &&
-                Objects.equals(address, person.address) &&
-                Objects.equals(city, person.city);
+                Objects.equals(phoneNumber, person.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, address, city);
+        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber);
     }
 }

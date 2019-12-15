@@ -24,7 +24,7 @@
     </thead>
     <tbody>
     <tr th:each="pet:${owner?.pets}">
-        <td th:text="${pet?.hashCode()}">123</td>
+        <td th:text="${pet?.getReference()}">123</td>
         <td th:text="${pet?.getName()}">Pancho</td>
         <td th:text="${pet?.getPetType().getName()}">Dog</td>
         <td th:text="${pet?.getSex()}">Male</td>

@@ -31,6 +31,17 @@ public class DataPopulate implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        Address a1 = new Address("Rua da Mesquita", "33", "Beja");
+        Address a2 = new Address("June Street", "POBox 213", "Oklahoma");
+        Address a3 = new Address("Travessa do Galheiro", "44", "Cucujães");
+        Address a4 = new Address("Rua da Fragata", "33", "Braga");
+        Address a5 = new Address("Rua da Mesquita", "33", "Beja");
+        Address a6 = new Address("Avenida do Brasil", "333", "Lisboa");
+        Address a7 = new Address("Avenia do Mercado", "12", "Lixa");
+
+
+
         PetType dog = new PetType();
         dog.setName("Dog");
 
@@ -77,15 +88,15 @@ public class DataPopulate implements CommandLineRunner {
         System.out.println("Populated pets...");
 
         Owner o1 = Owner.builder().firstName("Pablo").lastName("Gonzalvez").build();
-        o1.setAddress("June Street, Oklahoma, POBox 213");
+        o1.setAddress(a2);
+        a2.setResident(o1);
         o1.setPhoneNumber("5785474328732");
         o1.addPet(p1);
         p1.setOwner(o1);
 
-//        Set<Pet> pets = new HashSet<>(Arrays.asList(p4, p5, p6));
-//        Owner o2 = Owner.builder().firstName("Fiona").lastName("Martinez").pets(pets).build();
         Owner o2 = Owner.builder().firstName("Fiona").lastName("Martinez").build();
-        o2.setAddress("Travessa do Galheiro, 44, Cucujães");
+        o2.setAddress(a3);
+        a3.setResident(o2);
         o2.setPhoneNumber("255123234");
         o2.addPet(p4); // Fanny
         p4.setOwner(o2);
@@ -95,25 +106,28 @@ public class DataPopulate implements CommandLineRunner {
         p6.setOwner(o2);
 
         Owner o3 = Owner.builder().firstName("Martha").lastName("Alvarez").build();
-        o3.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
+        o3.setAddress(a1);
+        a1.setResident(o3);
         o3.setPhoneNumber("123123123");
         o3.addPet(p2);
         p2.setOwner(o3);
 
 
         Owner o4 = Owner.builder().firstName("Raul").lastName("Alvarez").build();
-        o4.setAddress("Rua da Mesquita, 33, Los Cacos, Beja");
+        o4.setAddress(a5);
+        a5.setResident(o4);
         o4.setPhoneNumber("123123123");
         o4.addPet(p3);
         p3.setOwner(o4);
 
         Owner o5 = Owner.builder().firstName("Raul").lastName("Antunes").build();
-        o5.setAddress("Rua da Fragata, 33, Los Angeles, Braga");
+        o5.setAddress(a4);
+        a4.setResident(o5);
         o5.setPhoneNumber("8456065454");
         o5.addPet(p7);
         p7.setOwner(o5);
 
-        ownerService.saveAll(Arrays.asList(o1, o2, o3, o4,o5));
+        ownerService.saveAll(Arrays.asList(o1, o2, o3, o4, o5));
 
         System.out.println("Populated owners...");
 
@@ -130,17 +144,17 @@ public class DataPopulate implements CommandLineRunner {
         Specialty savedDentistry = specialtyService.save(dentistry);
 
         Vet v1 = Vet.builder().firstName("Ramirez").lastName("Almeida").build();
-        v1.setAddress("Avenida do Brasil, 333, Lisboa");
+        v1.setAddress(a6);
         v1.setPhoneNumber("123321343");
         v1.addSpecialty(savedRadiology);
 //
         Vet v2 = Vet.builder().firstName("Roma").lastName("Nowa").build();
-        v2.setAddress("Avenia do Mercado, 12, Lixa");
+        v2.setAddress(a7);
         v2.setPhoneNumber("987543234");
         v2.addSpecialty(savedSurgery);
         v2.addSpecialty(savedDentistry);
 
-        vetService.saveAll(Arrays.asList(v1, v2));
+//        vetService.saveAll(Arrays.asList(v1, v2));
 
         System.out.println("Populated vets...");
 
