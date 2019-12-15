@@ -31,14 +31,12 @@ class OwnerMapServiceTest {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
 
         PetType pt1 = new PetType("kitty");
-        p1 = new Pet();
+        p1 = new Pet("Yahsmin Test");
         p1.setSex("F");
-        p1.setName("Yahsmin Test");
         p1.setPetType(pt1);
 
-        p2 = new Pet();
+        p2 = new Pet("Simão Test");
         p2.setSex("M");
-        p2.setName("Simão Test");
         p2.setPetType(pt1);
 
         o1 = ownerMapService.save(Owner.builder()

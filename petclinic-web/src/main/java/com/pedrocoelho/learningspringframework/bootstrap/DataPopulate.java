@@ -39,44 +39,37 @@ public class DataPopulate implements CommandLineRunner {
 
         petTypeService.saveAll(Arrays.asList(dog, cat));
 
-        Pet p1 = new Pet();
-        p1.setName("Sancho");
+        Pet p1 = new Pet("Sancho");
         p1.setBirthDay(LocalDate.of(2000, 1, 13));
         p1.setPetType(dog);
         p1.setSex("Male");
 
-        Pet p2 = new Pet();
-        p2.setName("Georgina");
+        Pet p2 = new Pet("Georgina");
         p2.setBirthDay(LocalDate.of(2019, 8, 26));
         p2.setPetType(cat);
         p2.setSex("Female");
 
-        Pet p3 = new Pet();
-        p3.setName("Gregory");
+        Pet p3 = new Pet("Gregory");
         p3.setBirthDay(LocalDate.of(2017, 2, 6));
         p3.setPetType(cat);
         p3.setSex("Male");
 
-        Pet p4 = new Pet();
-        p4.setName("Fanny");
+        Pet p4 = new Pet("Fanny");
         p4.setBirthDay(LocalDate.of(2017, 2, 6));
         p4.setPetType(dog);
         p4.setSex("Female");
 
-        Pet p5 = new Pet();
-        p5.setName("Pancho");
+        Pet p5 = new Pet("Pancho");
         p5.setBirthDay(LocalDate.of(2013, 12, 26));
         p5.setPetType(dog);
         p5.setSex("Male");
 
-        Pet p6 = new Pet();
-        p6.setName("Buggy");
+        Pet p6 = new Pet("Buggy");
         p6.setBirthDay(LocalDate.of(2018, 3, 16));
         p6.setPetType(dog);
         p6.setSex("Female");
 
-        Pet p7 = new Pet();
-        p7.setName("Lalika");
+        Pet p7 = new Pet("Lalika");
         p7.setBirthDay(LocalDate.of(2016, 11, 16));
         p7.setPetType(cat);
         p7.setSex("Female");

@@ -29,18 +29,34 @@ public class Owner extends Person {
         if (pets != null) {
             this.pets = pets;
         }
-        super.setReference(this.generateReference());
-        System.out.println(this.getReference());
+
+        String mdString = this.getFirstName()
+                + this.getLastName()
+                + this.getAddress()
+                + this.getCity()
+                + this.getPhoneNumber()
+                + this.getId();
+
+        super.setReference(super.generateReference(mdString));
     }
 
     public Owner(Long id, String firstName, String lastName) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
-        super.setReference(this.generateReference());
+
+        String mdString = this.getFirstName()
+                + this.getLastName()
+                + this.getAddress()
+                + this.getCity()
+                + this.getPhoneNumber()
+                + this.getId();
+
+        super.setReference(super.generateReference(mdString));
     }
 
     public Owner() throws NoSuchAlgorithmException {
         super();
-        super.setReference(this.generateReference());
+        String mdString = this.getId() + "";
+        super.setReference(super.generateReference(mdString));
     }
 
     public Set<Pet> getPets() {
@@ -86,20 +102,5 @@ public class Owner extends Person {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());
-    }
-
-    public String generateReference() throws NoSuchAlgorithmException {
-
-        String mdString = this.getFirstName()
-                + this.getLastName()
-                + this.getAddress()
-                + this.getCity()
-                + this.getPhoneNumber()
-                + this.getId();
-
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(mdString.getBytes());
-        byte[] digest = md.digest();
-        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 }

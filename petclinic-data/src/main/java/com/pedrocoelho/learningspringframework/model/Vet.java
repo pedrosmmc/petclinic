@@ -22,12 +22,19 @@ public class Vet extends Person {
     @Builder
     public Vet(Long id, String firstName, String lastName) throws NoSuchAlgorithmException {
         super(id, firstName, lastName);
-        super.setReference(this.generateReference());
+        String mdString = this.getFirstName()
+                + this.getLastName()
+                + this.getAddress()
+                + this.getCity()
+                + this.getPhoneNumber()
+                + this.getId();
+
+        super.setReference(super.generateReference(mdString));
     }
 
     public Vet() throws NoSuchAlgorithmException {
-        super();
-        super.setReference(this.generateReference());
+        super();String mdString = this.getId() + "";
+        super.setReference(super.generateReference(mdString));
     }
 
     public Set<Specialty> getspecialties() {

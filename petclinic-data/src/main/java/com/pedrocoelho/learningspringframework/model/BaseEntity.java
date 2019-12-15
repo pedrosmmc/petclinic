@@ -4,7 +4,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.xml.bind.DatatypeConverter;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 
@@ -35,7 +38,9 @@ public class BaseEntity implements Serializable {
         return reference;
     }
 
-    public void setReference(String reference) {
+    public void setReference(String reference) throws NoSuchAlgorithmException {
+        String mdString = this.id + "";
+        if (reference == null) this.reference = this.generateReference(mdString);
         this.reference = reference;
     }
 
@@ -54,5 +59,12 @@ public class BaseEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String generateReference(String digester) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(digester.getBytes());
+        byte[] digest = md.digest();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 }

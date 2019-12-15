@@ -78,7 +78,7 @@ class OwnerControllerTest {
         mockMvc.perform(get("/owners/find?firstName=Leo"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize(2)));
+                .andExpect(model().attribute("owners", hasSize(owners.size())));
 
         verify(ownerService, times(1)).findAllByFirstName(anyString());
     }

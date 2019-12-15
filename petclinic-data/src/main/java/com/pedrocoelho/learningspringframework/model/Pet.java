@@ -30,7 +30,15 @@ public class Pet extends BaseEntity {
 
     public Pet() throws NoSuchAlgorithmException {
         super();
-        super.setReference(this.generateReference());
+        String mdString = getId() + "";
+        super.setReference(super.generateReference(mdString));
+    }
+
+        public Pet(String name) throws NoSuchAlgorithmException {
+        super();
+        this.name = name;
+        String mdString = this.getId() + this.name;
+        super.setReference(super.generateReference(mdString));
     }
 
     @Builder
@@ -40,11 +48,23 @@ public class Pet extends BaseEntity {
         this.sex = sex;
         this.petType = petType;
         this.owner = owner;
-        super.setReference(this.generateReference());
+
+        String mdString = this.getId()
+                + this.name
+                + this.sex
+                + this.birthDay
+                + this.petType
+                + this.owner;
+
+        super.setReference(super.generateReference(mdString));
     }
 
     public PetType getPetType() {
         return petType;
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType;
     }
 
     public String getName() {
@@ -53,10 +73,6 @@ public class Pet extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPetType(PetType petType) {
-        this.petType = petType;
     }
 
     public Owner getOwner() {
@@ -105,12 +121,5 @@ public class Pet extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), name, birthDay, sex, petType, owner);
-    }
-
-    public String generateReference() throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(ReflectionToStringBuilder.toString(this).getBytes());
-        byte[] digest = md.digest();
-        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 }

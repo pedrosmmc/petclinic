@@ -37,20 +37,24 @@ public class OwnerController {
     }
 
     @RequestMapping("/find")
-    public String findOwnersByFirstName(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName, Model model) {
+    public String findOwnersByFirstNameOrLastName(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName, Model model) {
         if (firstName != null & lastName != null) {
+            System.out.println(" >>> by firstname and lastname");
             Set<Owner> filteredOwners = ownerService.findAllByFirstName(firstName).stream().filter(owner -> owner.getLastName().equals(lastName)).collect(Collectors.toSet());
             model.addAttribute("owners", filteredOwners);
         }
 
         if(lastName == null) {
+            System.out.println(" >>> by firstname");
             model.addAttribute("owners", ownerService.findAllByFirstName(firstName));
         }
 
         if(firstName == null) { // condition not needed
+            System.out.println(" >>> by lastname");
             model.addAttribute("owners", ownerService.findAllByLastName(lastName));
         }
 
+        System.out.println(" >>> all");
         model.addAttribute("owners", ownerService.findAll());
 
         return "owners/index";
